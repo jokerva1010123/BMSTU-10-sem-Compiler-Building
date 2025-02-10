@@ -1,0 +1,16 @@
+2
+S S'
+2
+a b
+10
+S' -> 
+S' -> S
+S -> a S b
+S -> a S b S
+S -> a b
+S -> a b S
+S -> b S a
+S -> b S a S
+S -> b a
+S -> b a S
+S

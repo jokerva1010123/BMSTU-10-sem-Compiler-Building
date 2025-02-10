@@ -1,0 +1,39 @@
+{
+    "term_symbols": [
+        {"name": "IDENT", "spell": "a"},
+        {"name": "ADD", "spell": "+"},
+        {"name": "MUL", "spell": "*"},
+        {"name": "LPAREN", "spell": "("},
+        {"name": "RPAREN", "spell": ")"}
+    ],
+    "non_term_symbols": [
+        {"name": "S"}, {"name": "T"}, {"name": "F"}
+    ],
+    "productions": [
+        {
+            "lhs": "S",
+            "rhs": ["S", "ADD", "T"]
+        },
+        {
+            "lhs": "S",
+            "rhs": ["T"]
+        },
+        {
+            "lhs": "T",
+            "rhs": ["T", "MUL", "F"]
+        },
+        {
+            "lhs": "T",
+            "rhs": ["F"]
+        },
+        {
+            "lhs": "F",
+            "rhs": ["IDENT"]
+        },
+        {
+            "lhs": "F",
+            "rhs": ["LPAREN", "S","RPAREN"]
+        }
+    ],
+    "start_symbol": {"name": "S"}
+}

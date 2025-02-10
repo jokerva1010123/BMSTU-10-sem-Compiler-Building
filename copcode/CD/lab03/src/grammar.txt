@@ -1,0 +1,117 @@
+<Expression> ->
+	<ArithmeticExpression> <SignRelationOperation> <ArithmeticExpression>
+
+<ArithmeticExpression> ->
+	<Term> |
+	<SignAdditionalOperation> <Term> |
+	<ArithmeticExpression> <SignAdditionalOperation> <Term>
+
+<Term> ->
+	<Factor> |
+	<Term> <SignMultiplicationOperator> <Factor>
+
+<Factor> ->
+	<PrimaryExpression> |
+	<Factor> ^ <PrimaryExpression>
+
+<PrimaryExpression> ->
+	<Number> |
+	<Identifier> |
+	( <ArithmeticExpression> )
+
+<SignAdditionalOperation> ->
+	+|-
+
+<SignMultiplicationOperator> ->
+	*|/|%
+
+<SignRelationOperation> ->
+	< | <= | = | >= | > | <>
+
+
+
+
+
+Expression ->
+	ArithmeticExpression SignRelationOperation ArithmeticExpression.
+
+ArithmeticExpression ->
+	Term |
+	SignAdditionalOperation Term |
+	ArithmeticExpression SignAdditionalOperation Term.
+
+Term ->
+	Factor |
+	Term SignMultiplicationOperator Factor.
+
+Factor ->
+	PrimaryExpression |
+	Factor pow PrimaryExpression.
+
+PrimaryExpression ->
+	Number |
+	Identifier |
+	( ArithmeticExpression ).
+
+SignAdditionalOperation ->
+	+ | minus.
+
+SignMultiplicationOperator ->
+	* | / | percent.
+
+SignRelationOperation ->
+	lt | le | eq | ge | gt | neq.
+
+
+
+// removed left recursion
+// https://smlweb.cpsc.ucalgary.ca/transform.php?grammar=Expression+-%3E%0A%09ArithmeticExpression+SignRelationOperation+ArithmeticExpression+.%0A%0AArithmeticExpression+-%3E%0A%09Term+%7C%0A%09SignAdditionalOperation+Term+%7C%0A%09ArithmeticExpression+SignAdditionalOperation+Term+.%0A%0ATerm+-%3E%0A%09Factor+%7C%0A%09Term+SignMultiplicationOperator+Factor+.%0A%0AFactor+-%3E%0A%09PrimaryExpression+%7C%0A%09Factor+pow+PrimaryExpression+.%0A%0APrimaryExpression+-%3E%0A%09Number+%7C%0A%09Identifier+%7C%0A%09%28+ArithmeticExpression+%29.%0A%0ASignAdditionalOperation+-%3E%0A%09%2B+%7C+minus+.%0A%0ASignMultiplicationOperator+-%3E%0A%09%2A+%7C+%2F+%7C+percent+.%0A%0ASignRelationOperation+-%3E%0A%09lt+%7C+le+%7C+eq+%7C+ge+%7C+gt+%7C+neq+.&substs=&transformation=auto
+// https://smlweb.cpsc.ucalgary.ca/transform.php?grammar=%0A%0AExpression+-%3E+ArithmeticExpression+SignRelationOperation+ArithmeticExpression+.%0A%0AArithmeticExpression+-%3E+Term+ArithmeticExpression_1+%0A+++++++++++++++++++++++%7CSignAdditionalOperation+Term+ArithmeticExpression_1+.%0A%0AArithmeticExpression_1+-%3E+SignAdditionalOperation+Term+ArithmeticExpression_1+%0A+++++++++++++++++++++++++%7C.%0A%0ATerm+-%3E+Factor+Term_1+.%0A%0ATerm_1+-%3E+SignMultiplicationOperator+Factor+Term_1+%0A+++++++++%7C.%0A%0AFactor+-%3E+PrimaryExpression+Factor_1+.%0A%0AFactor_1+-%3E+pow+PrimaryExpression+Factor_1+%0A+++++++++++%7C.%0A%0APrimaryExpression+-%3E+Number+%0A++++++++++++++++++++%7CIdentifier+%0A++++++++++++++++++++%7C%28+ArithmeticExpression+%29+.%0A%0ASignAdditionalOperation+-%3E+%2B+%0A++++++++++++++++++++++++++%7Cminus+.%0A%0ASignMultiplicationOperator+-%3E+%2A+%0A+++++++++++++++++++++++++++++%7C%2F+%0A+++++++++++++++++++++++++++++%7Cpercent+.%0A%0ASignRelationOperation+-%3E+lt+%0A++++++++++++++++++++++++%7Cle+%0A++++++++++++++++++++++++%7Ceq+%0A++++++++++++++++++++++++%7Cge+%0A++++++++++++++++++++++++%7Cgt+%0A++++++++++++++++++++++++%7Cneq+.%0A%0A&substs=%0A&transformation=factor
+
+
+Expression →
+    ArithmeticExpression SignRelationOperation ArithmeticExpression .
+
+ArithmeticExpression →
+    Term ArithmeticExpression1 |
+    SignAdditionalOperation Term ArithmeticExpression1 .
+
+ArithmeticExpression1 →
+    SignAdditionalOperation Term ArithmeticExpression1
+    | .
+
+Term →
+    Factor Term1 .
+
+Term1 →
+    SignMultiplicationOperator Factor Term1
+    | .
+
+Factor →
+    PrimaryExpression Factor1 .
+
+Factor1 →
+    pow PrimaryExpression Factor1
+    | .
+
+PrimaryExpression →
+    Number
+    | Identifier
+    | ( ArithmeticExpression ) .
+
+SignAdditionalOperation →
+    +
+    | minus .
+
+SignMultiplicationOperator →
+    *
+    | /
+    | percent .
+
+SignRelationOperation →
+    lt
+    | le
+    | eq
+    | ge
+    | gt
+    | neq .

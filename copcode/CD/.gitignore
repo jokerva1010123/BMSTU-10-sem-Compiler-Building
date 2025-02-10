@@ -1,0 +1,14 @@
+# MacOS
+.DS_Store
+
+# LaTeX
+*.aux
+*.bcf
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+
+# CLion
+.idea/
+cmake-build-*/

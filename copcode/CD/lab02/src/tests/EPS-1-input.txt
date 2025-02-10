@@ -1,0 +1,14 @@
+4
+A B C S
+3
+a c d
+6
+S -> A B C d
+A -> a
+A ->
+B -> A C
+C -> c
+C ->
+S
+
+# https://neerc.ifmo.ru/wiki/index.php?title=Удаление_eps-правил_из_грамматики

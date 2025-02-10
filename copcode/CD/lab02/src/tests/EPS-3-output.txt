@@ -1,0 +1,23 @@
+5
+A B C S S'
+2
+a b
+17
+S' -> 
+S' -> S
+B -> C
+B -> C C
+B -> a
+C -> A
+C -> A A
+C -> b
+A -> B
+A -> B B
+S -> A
+S -> A B
+S -> A B C
+S -> A C
+S -> B
+S -> B C
+S -> C
+S
