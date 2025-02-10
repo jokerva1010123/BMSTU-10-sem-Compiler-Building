@@ -1,0 +1,39 @@
+Enter string to check or \q to exit:
+a
+cur state (0): check for 'a':
+| b -> 0
+| c -> 0
+| a -> 0
+a: true
+Enter string to check or \q to exit:
+abcaa
+cur state (0): check for 'a':
+| a -> 0
+| b -> 0
+| c -> 0
+cur state (0): check for 'b':
+| c -> 0
+| a -> 0
+| b -> 0
+cur state (0): check for 'c':
+| c -> 0
+| a -> 0
+| b -> 0
+cur state (0): check for 'a':
+| c -> 0
+| a -> 0
+| b -> 0
+cur state (0): check for 'a':
+| c -> 0
+| a -> 0
+| b -> 0
+abcaa: true
+Enter string to check or \q to exit:
+f
+cur state (0): check for 'f':
+| a -> 0
+| b -> 0
+| c -> 0
+f: false
+Enter string to check or \q to exit:
+\q
